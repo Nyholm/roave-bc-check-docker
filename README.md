@@ -56,10 +56,10 @@ _.github/main.workflow_
 ```
 workflow "Main" {
   on = "push"
-  resolves = ["PHPStan"]
+  resolves = ["BC Check"]
 }
 
-action "PHPStan" {
+action "BC Check" {
   uses = "docker://nyholm/nyholm/roave-bc-check-ga"
   secrets = ["GITHUB_TOKEN"]
   args = ""
