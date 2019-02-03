@@ -9,7 +9,7 @@ The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
 
 - `latest` [(latest/Dockerfile)](latest/Dockerfile)
 - `2.x` [(2.x/Dockerfile)](2.x/Dockerfile)
-- `1.x` [(2.x/Dockerfile)](1.x/Dockerfile)
+- `1.x` [(1.x/Dockerfile)](1.x/Dockerfile)
 
 ## How to use this image
 
@@ -68,12 +68,9 @@ action "Roave BC Check" {
 
 **You can copy/paste the .github folder (under examples/) to your project and thats all!**
 
-### Docker
+## Docker
 
-A Docker-Image is built automatically and located here:
-https://cloud.docker.com/u/nyholm/repository/docker/nyholm/roave-bc-check-ga
+Docker images are built automatically every day. They are located here: 
 
-You can run it in any given directory like this:
-
-`docker run --rm -it -w=/app -v ${PWD}:/app nyholm/roave-bc-check-ga:latest`
-
+* [nyholm/roave-bc-check](https://cloud.docker.com/u/nyholm/repository/docker/nyholm/roave-bc-check)
+* [nyholm/roave-bc-check-ga](https://cloud.docker.com/u/nyholm/repository/docker/nyholm/roave-bc-check-ga)
