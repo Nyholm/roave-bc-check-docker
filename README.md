@@ -8,6 +8,7 @@ The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
 ## Supported tags
 
 - `latest` [(latest/Dockerfile)](latest/Dockerfile)
+- `stable` [(stable/Dockerfile)](stable/Dockerfile)
 - `2.x` [(2.x/Dockerfile)](2.x/Dockerfile)
 - `1.x` [(1.x/Dockerfile)](1.x/Dockerfile)
 

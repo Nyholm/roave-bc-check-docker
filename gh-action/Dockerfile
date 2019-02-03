@@ -1,4 +1,4 @@
-FROM nyholm/roave-bc-check:2.x
+FROM nyholm/roave-bc-check:stable
 
 LABEL "com.github.actions.name"="NYHOLM-roave-bc-check"
 LABEL "com.github.actions.description"="roave-bc-check"
