@@ -69,6 +69,8 @@ action "Roave BC Check" {
 
 **You can copy/paste the .github folder (under examples/) to your project and thats all!**
 
+The github action is always using the latest stable release of `roave/backward-compatibility-check`.
+
 ## Docker
 
 Docker images are built automatically every day. They are located here: 
