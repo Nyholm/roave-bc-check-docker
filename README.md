@@ -45,7 +45,7 @@ docker run --rm -v /path/to/app:/app nyholm/roave-bc-check [some arguments for R
 For example:
 
 ```
-docker run --rm -v /path/to/app:/app nyholm/roave-bc-check  --format=markdown
+docker run --rm -v `pwd`:/app nyholm/roave-bc-check  --format=markdown
 ```
 
 ## GithubAction
@@ -75,5 +75,5 @@ https://cloud.docker.com/u/nyholm/repository/docker/nyholm/roave-bc-check-ga
 
 You can run it in any given directory like this:
 
-`docker run --rm -it -w=/app -v ${PWD}:/app nyholm/roave-bc-check-ga:latest
+`docker run --rm -it -w=/app -v ${PWD}:/app nyholm/roave-bc-check-ga:latest`
 
