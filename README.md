@@ -48,7 +48,7 @@ For example:
 docker run --rm -v `pwd`:/app nyholm/roave-bc-check  --format=markdown
 ```
 
-## GithubAction
+## Github Action
 
 You can use it as a Github Action like this:
 
@@ -56,11 +56,11 @@ _.github/main.workflow_
 ```
 workflow "Main" {
   on = "push"
-  resolves = ["BC Check"]
+  resolves = ["Roave BC Check"]
 }
 
-action "BC Check" {
-  uses = "docker://nyholm/nyholm/roave-bc-check-ga"
+action "Roave BC Check" {
+  uses = "docker://nyholm/roave-bc-check-ga"
   secrets = ["GITHUB_TOKEN"]
   args = ""
 }
