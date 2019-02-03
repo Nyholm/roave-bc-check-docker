@@ -48,7 +48,7 @@ For example:
 docker run --rm -v /path/to/app:/app nyholm/roave-bc-check  --format=markdown
 ```
 
-# GithubAction
+## GithubAction
 
 You can use it as a Github Action like this:
 
@@ -66,10 +66,9 @@ action "BC Check" {
 }
 ```
 
-
 **You can copy/paste the .github folder (under examples/) to your project and thats all!**
 
-## Docker
+### Docker
 
 A Docker-Image is built automatically and located here:
 https://cloud.docker.com/u/nyholm/repository/docker/nyholm/roave-bc-check-ga

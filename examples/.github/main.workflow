@@ -1,9 +1,9 @@
 workflow "Main" {
   on = "push"
-  resolves = ["BC Check"]
+  resolves = ["Roave BC Check"]
 }
 
-action "BC Check" {
+action "Roave BC Check" {
   uses = "docker://nyholm/roave-bc-check-ga"
   secrets = ["GITHUB_TOKEN"]
   args = ""
