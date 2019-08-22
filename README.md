@@ -53,18 +53,18 @@ docker run --rm -v `pwd`:/app nyholm/roave-bc-check  --format=markdown
 
 You can use it as a Github Action like this:
 
-_.github/main.workflow_
+_.github/workflow/test.yml_
 ```
-workflow "Main" {
-  on = "push"
-  resolves = ["Roave BC Check"]
-}
-
-action "Roave BC Check" {
-  uses = "docker://nyholm/roave-bc-check-ga"
-  secrets = ["GITHUB_TOKEN"]
-  args = ""
-}
+on: [push, pull_request]
+name: Test
+jobs:
+    roave_bc_check:
+        name: Roave BC Check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - name: Roave BC Check
+              uses: docker://nyholm/roave-bc-check-ga
 ```
 
 **You can copy/paste the .github folder (under examples/) to your project and thats all!**
