@@ -9,6 +9,8 @@ The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
 
 - `latest` [(latest/Dockerfile)](latest/Dockerfile)
 - `stable` [(stable/Dockerfile)](stable/Dockerfile)
+- `4.x` [(4.x/Dockerfile)](4.x/Dockerfile)
+- `3.x` [(3.x/Dockerfile)](3.x/Dockerfile)
 - `2.x` [(2.x/Dockerfile)](2.x/Dockerfile)
 - `1.x` [(1.x/Dockerfile)](1.x/Dockerfile)
 
@@ -25,7 +27,7 @@ docker pull nyholm/roave-bc-check
 Alternatively, pull a specific version:
 
 ```
-docker pull nyholm/roave-bc-check:2.x
+docker pull nyholm/roave-bc-check:4.x
 ```
 
 ### Usage
