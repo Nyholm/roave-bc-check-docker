@@ -3,5 +3,5 @@ MAINTAINER Tobias Nyholm <tobias.nyholm@gmail.com>
 
 ENV BC_CHECK_VERSION dev-master
 
-RUN composer global require roave/backward-compatibility-check dev-master --ignore-platform-reqs \
+RUN composer global require "roave/backward-compatibility-check:dev-master" --ignore-platform-reqs \
     && composer global show | grep backward-compatibility-check
