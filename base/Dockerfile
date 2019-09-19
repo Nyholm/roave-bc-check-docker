@@ -8,6 +8,7 @@ ENV PATH /composer/vendor/bin:$PATH
 RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.8/community add \
     git  \
     && docker-php-ext-install pcntl  \
+    && docker-php-ext-install intl  \
     && echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/99_memory-limit.ini \
     && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
