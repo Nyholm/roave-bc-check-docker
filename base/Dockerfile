@@ -1,17 +1,19 @@
-FROM php:7.3-alpine3.8
+FROM php:7.4-alpine
 MAINTAINER Tobias Nyholm <tobias.nyholm@gmail.com>
 
 ENV COMPOSER_HOME /composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV PATH /composer/vendor/bin:$PATH
 
-RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.8/community add \
-    git icu-dev gmp-dev \
-    && docker-php-ext-install -j$(nproc) pcntl intl bcmath gmp \
-    && echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/99_memory-limit.ini \
-    && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
+RUN set -e && \
+    apk add --no-cache --update --progress git icu gmp && \
+    apk add --no-cache --update --progress --virtual build-deps icu-dev gmp-dev && \
+    docker-php-ext-install -j$(nproc) pcntl intl bcmath gmp && \
+    echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/99_memory-limit.ini && \
+    apk del build-deps && \
+    rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-COPY --from=composer:1.8.0 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:1.9.1 /usr/bin/composer /usr/local/bin/composer
 
 VOLUME ["/app"]
 WORKDIR /app
