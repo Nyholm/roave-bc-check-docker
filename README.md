@@ -1,6 +1,6 @@
 # Docker image for [Roave Backward Compatibility Check](https://github.com/Roave/BackwardCompatibilityCheck)
 
-This repository has taken much inspiration from [PHPStan](https://github.com/phpstan/docker-image) and 
+This repository has taken much inspiration from [PHPStan](https://github.com/phpstan/phpstan) and 
 [OskarStark](https://github.com/OskarStark/phpstan-ga)
 
 The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
