@@ -6,9 +6,11 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV PATH /composer/vendor/bin:$PATH
 
 RUN set -e && \
-    apk --update --progress --no-cache add git icu-dev gmp-dev && \
+    apk add --no-cache --update --progress git icu gmp && \
+    apk add --no-cache --update --progress --virtual build-deps icu-dev gmp-dev && \
     docker-php-ext-install -j$(nproc) pcntl intl bcmath gmp && \
     echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/99_memory-limit.ini && \
+    apk del build-deps && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 COPY --from=composer:1.8.0 /usr/bin/composer /usr/local/bin/composer
