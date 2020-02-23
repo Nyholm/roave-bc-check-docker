@@ -8,8 +8,8 @@ script:
   - make test
 
 after_success:
-  - curl -X POST https://hub.docker.com/api/build/v1/source/91f5fbfa-5583-4a6b-8aaf-327c5a9c1cfc/trigger/3ec5b719-7e09-4dc9-b50c-983f7e1bb388/call/
-  - curl -X POST https://hub.docker.com/api/build/v1/source/37f235b4-2525-4c56-94e7-87b09f96e4cd/trigger/f1cd24f5-583f-4a17-9d92-a42b91f35336/call/
+  - curl -L -X POST https://hub.docker.com/api/build/v1/source/91f5fbfa-5583-4a6b-8aaf-327c5a9c1cfc/trigger/3ec5b719-7e09-4dc9-b50c-983f7e1bb388/call/
+  - curl -L -X POST https://hub.docker.com/api/build/v1/source/37f235b4-2525-4c56-94e7-87b09f96e4cd/trigger/f1cd24f5-583f-4a17-9d92-a42b91f35336/call/
 
 notifications:
   email: false
