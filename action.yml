@@ -1,0 +1,16 @@
+  
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+
+author: 'Nyholm'
+
+branding:
+    icon: 'check'
+    color: 'blue'
+
+description: 'Use Roave Backward Compatibility Checker via GithubAction.'
+
+name: 'roave-bc-check-phpstan'
+
+runs:
+    using: 'docker'
+    image: 'docker://nyholm/roave-bc-check-ga'
