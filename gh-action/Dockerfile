@@ -9,5 +9,7 @@ LABEL "repository"="https://github.com/Nyholm/roave-bc-check-docker"
 LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Tobias Nyholm <tobias.nyohlm@gmail.com>"
 
+RUN apk add --no-cache openssh
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

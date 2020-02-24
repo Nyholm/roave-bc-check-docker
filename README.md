@@ -64,12 +64,12 @@ jobs:
         name: Roave BC Check
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@master
+            - uses: actions/checkout@v2
             - name: Roave BC Check
               uses: docker://nyholm/roave-bc-check-ga
 ```
 
-**You can copy/paste the .github folder (under examples/) to your project and thats all!**
+**You can copy/paste the .github folder (under examples/) to your project and that's all!**
 
 The github action is always using the latest stable release of `roave/backward-compatibility-check`.
 
