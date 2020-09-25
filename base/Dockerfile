@@ -13,7 +13,7 @@ RUN set -e && \
     apk del build-deps && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-COPY --from=composer:1.10.12 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
 
 VOLUME ["/app"]
 WORKDIR /app
