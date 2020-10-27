@@ -1,6 +1,6 @@
 # Docker image for [Roave Backward Compatibility Check](https://github.com/Roave/BackwardCompatibilityCheck)
 
-This repository has taken much inspiration from [PHPStan](https://github.com/phpstan/phpstan) and 
+This repository has taken much inspiration from [PHPStan](https://github.com/phpstan/phpstan) and
 [OskarStark](https://github.com/OskarStark/phpstan-ga)
 
 The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
@@ -52,6 +52,20 @@ For example:
 docker run --rm -v `pwd`:/app nyholm/roave-bc-check  --format=markdown
 ```
 
+### Config
+
+You may specify a config file named `roave-bc-check.yaml` in the root of your project.
+With that config file you may ignore errors.
+
+```
+parameters:
+    ignoreErrors:
+        - '#\[BC\] CHANGED: Property Acme\\Foobar::\$bar changed default value from array#'
+        - '#\[BC\] CHANGED: Property .+ changed default value#'
+        - '#bar#'
+
+```
+
 ## Github Action
 
 You can use it as a Github Action like this:
@@ -76,7 +90,7 @@ The github action is always using the latest stable release of `roave/backward-c
 
 ## Docker
 
-Docker images are built automatically every day. They are located here: 
+Docker images are built automatically every day. They are located here:
 
 * [nyholm/roave-bc-check](https://cloud.docker.com/u/nyholm/repository/docker/nyholm/roave-bc-check)
 * [nyholm/roave-bc-check-ga](https://cloud.docker.com/u/nyholm/repository/docker/nyholm/roave-bc-check-ga)

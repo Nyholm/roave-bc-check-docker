@@ -18,4 +18,7 @@ COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
 VOLUME ["/app"]
 WORKDIR /app
 
-ENTRYPOINT ["roave-backward-compatibility-check"]
+RUN composer global require "symfony/process:^4.4|^5.1" "symfony/yaml:^4.4|^5.1" --no-update
+ADD config-support.php /composer/vendor/bin/roave-bc-with-config-support
+
+ENTRYPOINT ["roave-bc-with-config-support"]
