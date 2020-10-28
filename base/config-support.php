@@ -7,7 +7,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Yaml\Yaml;
 
 $roaveBinary = '/composer/vendor/bin/roave-backward-compatibility-check';
-$configFile = '/app/roave-bc-check.yaml';
+$configFiles = ['/app/roave-bc-check.yaml', 'roave-bc-check.yaml'];
 
 $arguments = $argv;
 $arguments[0] = $roaveBinary;
@@ -22,7 +22,8 @@ if ($process->isSuccessful()) {
     exit($process->getExitCode());
 }
 
-if (file_exists($configFile)) {
+$configFile = getConfigFile($configFiles);
+if (null === $configFile) {
     echo $process->getErrorOutput();
     exit($process->getExitCode());
 }
@@ -109,4 +110,14 @@ function printOutput(ErrorList $errorList)
     }
 
     echo sprintf('%s backwards-incompatible changes detected', count($errors)).PHP_EOL;
+}
+
+function getConfigFile(array $candidates) {
+     foreach ($candidates as $candidate) {
+         if (file_exists($candidate)) {
+             return $candidate;
+         }
+     }
+
+     return null;
 }
