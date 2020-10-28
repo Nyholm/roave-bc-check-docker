@@ -17,14 +17,12 @@ $process->setTimeout(null);
 $process->run();
 
 if ($process->isSuccessful()) {
-    echo $process->getOutput();
-    exit($process->getExitCode());
+    flushAndExit($process);
 }
 
 $configFile = getConfigFile($configFiles);
 if (null === $configFile) {
-    echo $process->getErrorOutput();
-    exit($process->getExitCode());
+    flushAndExit($process);
 }
 
 echo sprintf('Using config file "%s"', $configFile).PHP_EOL;
@@ -32,8 +30,7 @@ echo sprintf('Using config file "%s"', $configFile).PHP_EOL;
 $errorList = parseErrors($process->getErrorOutput());
 if ($errorList->getErrorCount() === 0) {
     // It is some other error.
-    echo $process->getErrorOutput();
-    exit($process->getExitCode());
+    flushAndExit($process);
 }
 
 // Parse config to see if we can ignore errors
@@ -50,32 +47,6 @@ if ($errorList->getErrorCount() === 0) {
 
 exit($process->getExitCode());
 
-function parseErrors(string $text)
-{
-    $firstErrorFound = false;
-    $output = '';
-    $currentError = '';
-    $list = [];
-    $lines = explode(PHP_EOL, $text);
-    foreach ($lines as $line) {
-        if (substr($line, 0, 4) === '[BC]') {
-            if ($firstErrorFound) {
-                $list[] = $currentError;
-            }
-            $firstErrorFound = true;
-            $currentError = $line;
-        } elseif (!$firstErrorFound) {
-            $output.=$line.PHP_EOL;
-        } elseif (substr($line, -39) === 'backwards-incompatible changes detected') {
-            $list[] = $currentError;
-            break;
-        } else {
-            $currentError .= $line;
-        }
-    }
-
-    return new ErrorList($output, $list);
-}
 
 class ErrorList {
     private string $output;
@@ -110,6 +81,40 @@ class ErrorList {
             }
         }
     }
+}
+
+function parseErrors(string $text)
+{
+    $firstErrorFound = false;
+    $output = '';
+    $currentError = '';
+    $list = [];
+    $lines = explode(PHP_EOL, $text);
+    foreach ($lines as $line) {
+        if (substr($line, 0, 4) === '[BC]') {
+            if ($firstErrorFound) {
+                $list[] = $currentError;
+            }
+            $firstErrorFound = true;
+            $currentError = $line;
+        } elseif (!$firstErrorFound) {
+            $output.=$line.PHP_EOL;
+        } elseif (substr($line, -39) === 'backwards-incompatible changes detected') {
+            $list[] = $currentError;
+            break;
+        } else {
+            $currentError .= $line;
+        }
+    }
+
+    return new ErrorList($output, $list);
+}
+
+function flushAndExit(Process $process)
+{
+    echo $process->getOutput().PHP_EOL;
+    echo $process->getErrorOutput();
+    exit($process->getExitCode());
 }
 
 function printOutput(ErrorList $errorList)
