@@ -12,6 +12,6 @@ echo "::group::$COMPOSER_COMMAND"
 $COMPOSER_COMMAND
 echo "::endgroup::"
 /composer/vendor/bin/roave-backward-compatibility-check --version
-/composer/vendor/bin/roave-backward-compatibility-check $*
+/composer/vendor/bin/roave-bc-with-config-support $*
 
 git remote remove bc_origin_https
