@@ -13,7 +13,6 @@ $arguments = $argv;
 $arguments[0] = $roaveBinary;
 
 $process = new Process($arguments);
-$process->setWorkingDirectory('/app');
 $process->setTimeout(null);
 $process->run();
 
@@ -28,8 +27,16 @@ if (null === $configFile) {
     exit($process->getExitCode());
 }
 
-$errorList = parseErrors($process->getErrorOutput());
+echo sprintf('Using config file "%s"', $configFile).PHP_EOL;
 
+$errorList = parseErrors($process->getErrorOutput());
+if ($errorList->getErrorCount() === 0) {
+    // It is some other error.
+    echo $process->getErrorOutput();
+    exit($process->getExitCode());
+}
+
+// Parse config to see if we can ignore errors
 $config = Yaml::parseFile($configFile);
 foreach ($config['parameters']['ignoreErrors'] ?? [] as $regex) {
     $errorList->removeErrorsMatching($regex);
@@ -37,7 +44,7 @@ foreach ($config['parameters']['ignoreErrors'] ?? [] as $regex) {
 
 printOutput($errorList);
 
-if (count($errorList->getErrors()) === 0) {
+if ($errorList->getErrorCount() === 0) {
     exit(0);
 }
 
@@ -88,6 +95,11 @@ class ErrorList {
     public function getErrors(): array
     {
         return $this->errors;
+    }
+
+    public function getErrorCount()
+    {
+        return count($this->getErrors());
     }
 
     public function removeErrorsMatching(string $regex)
