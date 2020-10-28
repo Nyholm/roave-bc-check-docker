@@ -6,5 +6,6 @@ ENV BC_CHECK_VERSION dev-master
 RUN composer global config minimum-stability dev \
     && composer global config prefer-stable true
 
-RUN composer global require "roave/backward-compatibility-check:dev-master" \
+RUN composer global require --no-update "roave/backward-compatibility-check:dev-master" \
+    && composer global update \
     && composer global show | grep backward-compatibility-check
