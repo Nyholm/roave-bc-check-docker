@@ -22,6 +22,11 @@ if ($process->isSuccessful()) {
     exit($process->getExitCode());
 }
 
+if (file_exists($configFile)) {
+    echo $process->getErrorOutput();
+    exit($process->getExitCode());
+}
+
 $errorList = parseErrors($process->getErrorOutput());
 
 $config = Yaml::parseFile($configFile);
