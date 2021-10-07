@@ -1,4 +1,4 @@
-FROM php:7.4-alpine
+FROM php:8.0-alpine
 MAINTAINER Tobias Nyholm <tobias.nyholm@gmail.com>
 
 ENV COMPOSER_HOME /composer
@@ -13,12 +13,12 @@ RUN set -e && \
     apk del build-deps && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 VOLUME ["/app"]
 WORKDIR /app
 
-RUN composer global require "symfony/process:^4.4|^5.1" "symfony/yaml:^4.4|^5.1" --no-update
+RUN composer global require "symfony/process:^4.4|^5.1|^6.0" "symfony/yaml:^4.4|^5.1|^6.0" --no-update
 ADD config-support.php /composer/vendor/bin/roave-bc-with-config-support
 
 ENTRYPOINT ["roave-bc-with-config-support"]
