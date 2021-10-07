@@ -8,7 +8,7 @@ ENV PATH /composer/vendor/bin:$PATH
 RUN set -e && \
     apk add --no-cache --update --progress git icu gmp && \
     apk add --no-cache --update --progress --virtual build-deps icu-dev gmp-dev && \
-    docker-php-ext-install -j$(nproc) pcntl intl bcmath gmp && \
+    docker-php-ext-install -j$(nproc) pcntl intl bcmath gmp sockets && \
     echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/99_memory-limit.ini && \
     apk del build-deps && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
