@@ -7,7 +7,7 @@ git remote remove bc_origin_https  >/dev/null 2>&1 || true
 git remote add bc_origin_https $REPO
 
 git fetch bc_origin_https --tags || true
-COMPOSER_COMMAND="composer install --no-scripts --no-progress"
+COMPOSER_COMMAND="composer install --no-scripts --no-progress --ignore-platform-reqs"
 echo "::group::$COMPOSER_COMMAND"
 $COMPOSER_COMMAND
 echo "::endgroup::"
