@@ -23,9 +23,6 @@ jobs:
       - name: Docker login
         run: echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Build base image
-        run: docker build -t nyholm/roave-bc-check:base base
-
       - name: Build images
         run: make
 
