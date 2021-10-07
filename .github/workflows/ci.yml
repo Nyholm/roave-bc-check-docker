@@ -1,0 +1,20 @@
+name: Test Docker images
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    name: Test images
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_BUILDKIT: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build images
+        run: make
+
+      - name: Test images
+        run: make test
