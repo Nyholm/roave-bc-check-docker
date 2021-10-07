@@ -1,4 +1,4 @@
-FROM php:8.0-alpine
+FROM php:7.4-alpine
 MAINTAINER Tobias Nyholm <tobias.nyholm@gmail.com>
 
 ENV COMPOSER_HOME /composer
