@@ -36,11 +36,7 @@ jobs:
         run: |
             docker push nyholm/roave-bc-check:latest
             docker push nyholm/roave-bc-check:stable
-            docker push nyholm/roave-bc-check:1.x
-            docker push nyholm/roave-bc-check:2.x
-            docker push nyholm/roave-bc-check:3.x
-            docker push nyholm/roave-bc-check:4.x
-            docker push nyholm/roave-bc-check:5.x
+            docker push nyholm/roave-bc-check:6.x
 
       - name: Build gh-action image
         run: docker build -t nyholm/roave-bc-check-ga:latest gh-action
