@@ -9,6 +9,8 @@ The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
 
 - `latest` [(latest/Dockerfile)](latest/Dockerfile)
 - `stable` [(stable/Dockerfile)](stable/Dockerfile)
+- `8.x` [(8.x/Dockerfile)](6.x/Dockerfile)
+- `7.x` [(7.x/Dockerfile)](6.x/Dockerfile)
 - `6.x` [(6.x/Dockerfile)](6.x/Dockerfile)
 - `5.x` [(5.x/Dockerfile)](5.x/Dockerfile)
 - `4.x` [(4.x/Dockerfile)](4.x/Dockerfile)

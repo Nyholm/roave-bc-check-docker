@@ -1,4 +1,4 @@
-VERSIONS := 6.x stable latest
+VERSIONS := 8.x stable latest
 BUILD_ALL_VERSIONS := $(addprefix build-, $(VERSIONS))
 TEST_ALL_VERSIONS := $(addprefix test-, $(VERSIONS))
 
