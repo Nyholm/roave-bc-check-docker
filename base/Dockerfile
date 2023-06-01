@@ -17,6 +17,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 VOLUME ["/app"]
 WORKDIR /app
+RUN git config --global --add safe.directory /app
 
 RUN composer global require "symfony/process:^4.4|^5.1|^6.0" "symfony/yaml:^4.4|^5.1|^6.0" --no-update
 ADD config-support.php /composer/vendor/bin/roave-bc-with-config-support
